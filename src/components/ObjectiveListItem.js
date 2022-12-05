@@ -5,34 +5,38 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
-function ObjectiveListItem ({objectiveName, objectiveDate, dDay}){
+function ObjectiveListItem ({objectiveName, objectiveDate, dDay, id}){
     
     return (
-        <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea>
-            <CardMedia
-                component="img"
-                height="140"
-                image={require("../images/start.jpg")}
-                alt="green iguana"
-            />
-            <div>
-            <DdayDiv>
-                 D-day <br/> <b>{ dDay }</b> 
-            </DdayDiv>
-            </div>
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    { objectiveName }
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                { objectiveDate } <br/>
-                 
-                </Typography>
-            </CardContent>
-            </CardActionArea>
-        </Card>
+        <Link to={`/detail/${id}`}>
+            <Card sx={{ maxWidth: 345 }}>
+                <CardActionArea>
+                <CardMedia
+                    component="img"
+                    height="140"
+                    image={require("../images/start.jpg")}
+                    alt="green iguana"
+                />
+                <div>
+                <DdayDiv>
+                    D-day <br/> <b>{ dDay }</b> 
+                </DdayDiv>
+                </div>
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                        { objectiveName }
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                    { objectiveDate } <br/>
+                    
+                    </Typography>
+                </CardContent>
+                </CardActionArea>
+            </Card>
+        </Link>
+
     );
 };
 

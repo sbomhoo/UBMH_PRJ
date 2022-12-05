@@ -16,9 +16,8 @@ function ObjectiveList({ objectives }){
     const getDday = (inputDate) => {
         var today = new Date();
         var gap = inputDate.getTime() - today.getTime();        //밀리세컨드
-        var result = Math.ceil(gap/(1000*60*60*24));            
+        var result = Math.ceil(gap/(1000*60*60*24));          
 
-        console.log("D-day : " + result);
         return result;
     }
 
@@ -32,7 +31,7 @@ function ObjectiveList({ objectives }){
                                     objectiveName = {objective.objectiveName}  
                                     objectiveDate = {dateFormatCustom2(objective.objectiveDate)}
                                     dDay = {getDday(objective.objectiveDate)}
-                                    key = {index}
+                                    id = {objective.id}
                                 />
                             </Grid>
                         ))}

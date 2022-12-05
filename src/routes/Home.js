@@ -8,54 +8,65 @@ import "./react-datepicker.css"
 import starImg from '../images/star.jpg';
 
 function Home() {
-    /* 스크롤 이동 */
+    /*** 스크롤 이동  ***/ 
     const inputForm = useRef();  //특정 DOM을 가리킬 때 사용하는 Hook함수
     const onMoveToForm = () => {
         inputForm.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
 
-    //input 입력 값 상태 -> 오브젝트형
-    const [input, setInput] = useState({
+    /*** 상태 관리  ***/ 
+    const [input, setInput] = useState({        //input 입력 값 상태 -> 오브젝트형
+        id : 0,
         objectiveName: '',
-        objectiveDate: ''
+        objectiveDate: '',
+        challengeList: ''
     });
+    const [objectives, setObjectives] = useState([]);    //submit 제출 할때 보낼 상태  -> 배열 안에 오브젝트형
 
-    //submit 제출 할때 보낼 상태  -> 배열 안에 오브젝트형
-    const [objectives, setObjectives] = useState([]);
+    /*** 비구조화 할당 (객체 안에 있는 값을 추출해서 변수 혹은 상수로 바로 선언)  ***/
+    const { objectiveName, objectiveDate, challengeList, id } = input;   
 
-    const { objectiveName, objectiveDate } = input;    //비구조화 할당(객체 안에 있는 값을 추출해서 변수 혹은 상수로 바로 선언)
-
+    /*** Input 입력 시  */
     const onChange = (e) => {              //onChange 를 써야 인풋박스안에 숫자 칠때마다 보인다..
         const { name, value } = e.target; // 우선 e.target 에서 이벤트가 발생한 name 과 value 를 추출
+
         setInput({
-            [name]: value // name 키를 가진 값을 value 로 수정 
+            ...input,
+            [name]: value, // name 키를 가진 값을 value 로 수정 
+            id : id+1
         });
     }
 
+    /*** 목표 제출시  ***/ 
     const onSubmit = (e) => {
         e.preventDefault();  //alert창 확인 클릭 후 새로고침 방지, state 사라질까봐 
-        setObjectives((currentState) => [...currentState, input]); //setObjectives에 함수를 보낸다. => 함수를 보낼때 첫번째 인자는 현재state다! 따라서 currentState 인자는 현재 상태를 뜻한다.
+        
+        if(objectiveName !== '' && objectiveDate !== '' && objectiveDate !== null){
+            setObjectives((currentState) => [...currentState, input]); //setObjectives에 함수를 보낸다. => 함수를 보낼때 첫번째 인자는 현재state다! 따라서 currentState 인자는 현재 상태를 뜻한다.
+            alert(`"${objectiveName}" 목표가 생성되었습니다.`);      //템플릿 문자열 
+    
+            //submit 후 input 제거 하기
+            setInput({
+                objectiveName: '',
+                objectiveDate: '',
+                challengeList: ''
+            })
 
-        console.log(typeof objectiveName);
-        console.log(typeof objectiveDate);
-        alert(`"${objectiveName}" 목표가 생성되었습니다.`);      //템플릿 문자열 
+            console.log(id);
 
-        //submit 후 input 제거 하기
-        setInput({
-            objectiveName: '',
-            objectiveDate: ''
-        })
+        }else{
+            alert('목표명 또는 목표 달성일이 비어있습니다. \n원할한 제출을 위해 입력해주세요.');
+        }
     }
 
-    // 요일 반환
-    const getDayName = (date) => {
+    /*** 날짜 관련 함수  ***/ 
+    const getDayName = (date) => {          // 요일 반환
         return date.toLocaleDateString('ko-KR', {
             weekday: 'long',
         }).substr(0, 1);
     }
 
-    // 날짜 비교시 년 월 일까지만 비교하게끔
-    const createDate = (date) => {
+    const createDate = (date) => {          // 날짜 비교시 년 월 일까지만 비교하게끔
         return new Date(new Date(date.getFullYear()
             , date.getMonth()
             , date.getDate()
@@ -86,10 +97,13 @@ function Home() {
                                 minDate={new Date()} // 과거 날짜 disable
                                 onChange={(date) => setInput({ ...input, "objectiveDate": date })} locale={ko} dateFormat="yyyy년 MM월 dd일"
                                 dayClassName={date => getDayName(createDate(date)) === '일' ? "sunday" : undefined}
-                            />
+                            /> <h5> </h5>
+                        <Label> Challenge List (*콤마로 구분) </Label><br/>
+                        <Input2 type="text" name="challengeList" value={challengeList} onChange={onChange} placeholder = "목표 달성을 위해 매일 해야하는 일들을 적어봅시다. "/><br />
+                        
                     </InputDiv>
                     <br/>
-                    <SubmitBtn>제출</SubmitBtn>
+                    <SubmitBtn>제 출</SubmitBtn>
                 </Form>
             </FormDiv>
         </HomeBody>
@@ -199,9 +213,19 @@ const Input = styled.input`
     border-radius: 5px;
     outline: none;
     line-height: 2.5rem;
-    font-size: 1.2rem;
+    font-size: 15px;
 `;
 
+const Input2 = styled.textarea`
+    width: 300px;
+    height: 90px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    outline: none;
+    font-size: 15px;
+    resize: none;
+    
+`;
 
 const SubmitBtn = styled.button`
     width: 305px;
