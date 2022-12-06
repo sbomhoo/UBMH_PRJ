@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import ObjectiveList from '../components/ObjectiveList';
 import DatePicker from "react-datepicker";
@@ -16,15 +16,15 @@ function Home() {
 
     /*** 상태 관리  ***/ 
     const [input, setInput] = useState({        //input 입력 값 상태 -> 오브젝트형
-        id : 0,
         objectiveName: '',
         objectiveDate: '',
         challengeList: ''
     });
     const [objectives, setObjectives] = useState([]);    //submit 제출 할때 보낼 상태  -> 배열 안에 오브젝트형
+    const [objectiveId, setObjectiveId] = useState(1);
 
     /*** 비구조화 할당 (객체 안에 있는 값을 추출해서 변수 혹은 상수로 바로 선언)  ***/
-    const { objectiveName, objectiveDate, challengeList, id } = input;   
+    const { objectiveName, objectiveDate, challengeList } = input;   
 
     /*** Input 입력 시  */
     const onChange = (e) => {              //onChange 를 써야 인풋박스안에 숫자 칠때마다 보인다..
@@ -32,9 +32,13 @@ function Home() {
 
         setInput({
             ...input,
-            [name]: value, // name 키를 가진 값을 value 로 수정 
-            id : id+1
+            [name]: value, // name 키를 가진 값을 value 로 수정
+            id: objectiveId
         });
+
+        setObjectiveId( 
+            (objectiveId) => ++objectiveId      //ID 업!
+        );
     }
 
     /*** 목표 제출시  ***/ 
@@ -42,6 +46,7 @@ function Home() {
         e.preventDefault();  //alert창 확인 클릭 후 새로고침 방지, state 사라질까봐 
         
         if(objectiveName !== '' && objectiveDate !== '' && objectiveDate !== null){
+
             setObjectives((currentState) => [...currentState, input]); //setObjectives에 함수를 보낸다. => 함수를 보낼때 첫번째 인자는 현재state다! 따라서 currentState 인자는 현재 상태를 뜻한다.
             alert(`"${objectiveName}" 목표가 생성되었습니다.`);      //템플릿 문자열 
     
@@ -51,13 +56,15 @@ function Home() {
                 objectiveDate: '',
                 challengeList: ''
             })
-
-            console.log(id);
-
         }else{
             alert('목표명 또는 목표 달성일이 비어있습니다. \n원할한 제출을 위해 입력해주세요.');
         }
     }
+
+    useEffect(() => {
+        localStorage.setItem("objectiveItem", JSON.stringify(objectives));
+    },[objectives])
+    
 
     /*** 날짜 관련 함수  ***/ 
     const getDayName = (date) => {          // 요일 반환
