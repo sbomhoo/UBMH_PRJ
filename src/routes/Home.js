@@ -20,7 +20,9 @@ function Home() {
         objectiveDate: '',
         challengeList: ''
     });
-    const [objectives, setObjectives] = useState([]);    //submit 제출 할때 보낼 상태  -> 배열 안에 오브젝트형
+    const [objectives, setObjectives] = useState(            //submit 제출 할때 보낼 상태  -> 배열 안에 오브젝트형
+        JSON.parse(window.localStorage.getItem("objectiveItem")) || []   //조건부 렌더링 OR연산자, 둘중 하나만 참이면 참인거 렌더링
+    );   
     const [objectiveId, setObjectiveId] = useState(1);
 
     /*** 비구조화 할당 (객체 안에 있는 값을 추출해서 변수 혹은 상수로 바로 선언)  ***/
@@ -29,16 +31,12 @@ function Home() {
     /*** Input 입력 시  */
     const onChange = (e) => {              //onChange 를 써야 인풋박스안에 숫자 칠때마다 보인다..
         const { name, value } = e.target; // 우선 e.target 에서 이벤트가 발생한 name 과 value 를 추출
-
         setInput({
             ...input,
-            [name]: value, // name 키를 가진 값을 value 로 수정
+            [name]: value,      // name 키를 가진 값을 value 로 수정
             id: objectiveId
-        });
-
-        setObjectiveId( 
-            (objectiveId) => ++objectiveId      //ID 업!
-        );
+        });  
+        setObjectiveId(objectiveId+1);  //ID 증가 
     }
 
     /*** 목표 제출시  ***/ 
@@ -46,23 +44,26 @@ function Home() {
         e.preventDefault();  //alert창 확인 클릭 후 새로고침 방지, state 사라질까봐 
         
         if(objectiveName !== '' && objectiveDate !== '' && objectiveDate !== null){
-
-            setObjectives((currentState) => [...currentState, input]); //setObjectives에 함수를 보낸다. => 함수를 보낼때 첫번째 인자는 현재state다! 따라서 currentState 인자는 현재 상태를 뜻한다.
+            setObjectives([
+                ...objectives,
+                input
+            ]);
             alert(`"${objectiveName}" 목표가 생성되었습니다.`);      //템플릿 문자열 
     
-            //submit 후 input 제거 하기
-            setInput({
+            setInput({               //submit 후 input 칸안에 값 제거 하기
                 objectiveName: '',
                 objectiveDate: '',
                 challengeList: ''
-            })
+            });            
         }else{
             alert('목표명 또는 목표 달성일이 비어있습니다. \n원할한 제출을 위해 입력해주세요.');
         }
     }
 
+    /** objectives 업데이트 될 때마다 localStorage에 state 저장 */
     useEffect(() => {
         localStorage.setItem("objectiveItem", JSON.stringify(objectives));
+        console.log("objectives 업데이트 !");
     },[objectives])
     
 

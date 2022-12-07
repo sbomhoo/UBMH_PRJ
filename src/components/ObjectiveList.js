@@ -6,6 +6,9 @@ import Container from '@mui/material/Container';
 
 function ObjectiveList({ objectives }){
     const dateFormatCustom2 = (inputDate) => {
+        if(typeof inputDate === 'string'){
+            inputDate = new Date(inputDate);
+        }
         var date1 = new Intl.DateTimeFormat("ko", { dateStyle: 'full' }).format(inputDate);
         var date2 = JSON.stringify(date1);
         
@@ -14,6 +17,9 @@ function ObjectiveList({ objectives }){
 
     //디 데이 구하기
     const getDday = (inputDate) => {
+        if(typeof inputDate === 'string'){
+            inputDate = new Date(inputDate);
+        }
         var today = new Date();
         var gap = inputDate.getTime() - today.getTime();        //밀리세컨드
         var result = Math.ceil(gap/(1000*60*60*24));          
