@@ -8,9 +8,8 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 
 function ObjectiveListItem ({objectiveName, objectiveDate, dDay, id}){
-    
     return (
-        <Link to={`/detail/${id}`}>
+        <Link to={`/detail/${id}`} style={{ textDecoration: "none" }}> 
             <Card sx={{ maxWidth: 345 }}>
                 <CardActionArea>
                 <CardMedia
@@ -26,11 +25,10 @@ function ObjectiveListItem ({objectiveName, objectiveDate, dDay, id}){
                 </div>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        { objectiveName }
+                       { objectiveName }
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                    { objectiveDate } <br/>
-                    
+                        { objectiveDate } <br/>
                     </Typography>
                 </CardContent>
                 </CardActionArea>
@@ -42,6 +40,7 @@ function ObjectiveListItem ({objectiveName, objectiveDate, dDay, id}){
 
 export default ObjectiveListItem;
 
+
 const DdayDiv = styled.div`
     font-size: 30px;
     font-weight : 100;
@@ -51,4 +50,7 @@ const DdayDiv = styled.div`
     top: 15%; left: 37%;
     padding: 0;
     margin: 0;
+    
 `
+
+

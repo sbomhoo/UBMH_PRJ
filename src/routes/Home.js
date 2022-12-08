@@ -8,6 +8,9 @@ import "./react-datepicker.css"
 import starImg from '../images/star.jpg';
 
 function Home() {
+    //로컬 스토리지 아이템
+    var aLocalStorageItem = JSON.parse(window.localStorage.getItem("objectiveItem"));
+
     /*** 스크롤 이동  ***/ 
     const inputForm = useRef();  //특정 DOM을 가리킬 때 사용하는 Hook함수
     const onMoveToForm = () => {
@@ -21,9 +24,13 @@ function Home() {
         challengeList: ''
     });
     const [objectives, setObjectives] = useState(            //submit 제출 할때 보낼 상태  -> 배열 안에 오브젝트형
-        JSON.parse(window.localStorage.getItem("objectiveItem")) || []   //조건부 렌더링 OR연산자, 둘중 하나만 참이면 참인거 렌더링
+    aLocalStorageItem || []   //조건부 렌더링 OR연산자, 둘중 하나만 참이면 참인거 렌더링
     );   
-    const [objectiveId, setObjectiveId] = useState(1);
+    const [objectiveId, setObjectiveId] = useState(
+        aLocalStorageItem? 
+            aLocalStorageItem.length !== 0 ? aLocalStorageItem[aLocalStorageItem.length -1].id : 1      //로컬스토리지에아이템이 있고 빈배열이 아니면 아이디 채번 이어서 관리
+        :1 
+    );
 
     /*** 비구조화 할당 (객체 안에 있는 값을 추출해서 변수 혹은 상수로 바로 선언)  ***/
     const { objectiveName, objectiveDate, challengeList } = input;   
