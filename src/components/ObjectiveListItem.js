@@ -3,9 +3,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import { CardActionArea, createTheme, ThemeProvider } from '@mui/material';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
+
 
 function ObjectiveListItem ({objectiveName, objectiveDate, dDay, challengeList, id}){
     return (
@@ -16,42 +17,46 @@ function ObjectiveListItem ({objectiveName, objectiveDate, dDay, challengeList, 
                 <CardMedia
                     component="img"
                     height="140"
-                    image={require("../images/start.jpg")}
+                    image={require("../styles/images/start.jpg")}
                     alt="green iguana"
                 />
-                <div>
                 <DdayDiv>
                     D-day <br/> <b>{ dDay }</b> 
                 </DdayDiv>
-                </div>
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                       { objectiveName }
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        { objectiveDate } <br/>
-                    </Typography>
+                    <ThemeProvider theme={theme}>
+                        <Typography gutterBottom variant="h6" component="div">
+                            {objectiveName.length > 10 ?  `${objectiveName.slice(0, 10)}..` : objectiveName} 
+                        </Typography>
+                        <Typography variant="h7" color="text.secondary">
+                            { objectiveDate } <br/>
+                        </Typography>
+                    </ThemeProvider>
                 </CardContent>
                 </CardActionArea>
             </Card>
         </Link>
-
     );
 };
 
 export default ObjectiveListItem;
 
+//mui에서 typography 폰트 지정
+const theme = createTheme({
+    typography:{
+        fontFamily: "NanumNeoExtraBold"
+    }
+})
 
 const DdayDiv = styled.div`
+    font-family: NanumNeoExtraBold; 
     font-size: 30px;
-    font-weight : 100;
     color : white;
     text-shadow: 2px 2px 2px black; 
     position: absolute;
-    top: 15%; left: 37%;
+    top: 15%; left: 34%;
     padding: 0;
     margin: 0;
-    
 `
 
 

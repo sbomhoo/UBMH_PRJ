@@ -4,8 +4,9 @@ import ObjectiveList from '../components/ObjectiveList';
 import DatePicker from "react-datepicker";
 import { ko } from 'date-fns/esm/locale';
 import "react-datepicker/dist/react-datepicker.css";
-import "./react-datepicker.css"
-import starImg from '../images/star.jpg';
+import "../styles/react-datepicker.css"
+import "../styles/default.css"
+import starImg from '../styles/images/star.jpg';
 
 function Home() {
     //로컬 스토리지 아이템
@@ -92,7 +93,7 @@ function Home() {
     return (
         <HomeBody>
             <HomeDiv>
-                <TitleH1> Project : <br /> 有備無患  유비무환 </TitleH1>
+                <TitleH1> Project <br /> 有備無患 : 유비무환 </TitleH1>
             </HomeDiv>
             <ButtonDiv>
                 <AddBtn onClick={onMoveToForm}> 목표 추가하기 </AddBtn>
@@ -127,8 +128,8 @@ function Home() {
 export default Home;
 
 const HomeBody = styled.div`
-    font-family : Noto Sans KR,sans-serif;
     text-align : center;
+    font-family:NanumNeoRegular;
 `
 
 const HomeDiv = styled.div`
@@ -144,12 +145,11 @@ const ButtonDiv = styled.div`
 `
 
 const TitleH1 = styled.h1`
-    font-family: Noto Sans KR,sans-serif;
+    font-family: NanumNeoExtraBold;    
     font-size: 90px;
-    font-weight: 900;
     position: absolute;
     left: 50%;
-    top: -5%;
+    top: 4%;
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
@@ -161,6 +161,7 @@ const TitleH1 = styled.h1`
 `
 
 const AddBtn = styled.button`
+    font-family:NanumNeoBold;
     box-shadow : 0px 2px 10px -5px #000000;
     border: none;
     border-radius: 20px;
@@ -241,6 +242,7 @@ const Input2 = styled.textarea`
 `;
 
 const SubmitBtn = styled.button`
+    font-family:NanumNeoBold;
     width: 305px;
     margin-left: 5px;
     box-shadow : 0px 2px 10px -5px #000000;

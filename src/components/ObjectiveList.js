@@ -54,4 +54,5 @@ export default ObjectiveList;
 const ObjectListDiv = styled.div`
     height: 80vh;
     width: 100%;
+    font-family:NanumGothicRegular;
 `

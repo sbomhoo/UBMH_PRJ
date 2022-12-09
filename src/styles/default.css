@@ -1,0 +1,17 @@
+/*아래 폰트*/
+@font-face {
+    font-family: "NanumNeoExtraBold";
+    src: url("./font/NanumSquareNeoTTF-eHv.woff") format("truetype");
+}
+
+/*아래 폰트*/
+@font-face {
+    font-family: "NanumNeoBold";
+    src: url("./font/NanumSquareNeoTTF-cBd.woff") format("truetype");
+}
+
+/*아래 폰트*/
+@font-face {
+    font-family: "NanumNeoRegular";
+    src: url("./font/NanumSquareNeoTTF-bRg.woff") format("truetype");
+}
