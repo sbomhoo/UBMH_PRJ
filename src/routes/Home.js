@@ -24,11 +24,11 @@ function Home() {
         challengeList: ''
     });
     const [objectives, setObjectives] = useState(            //submit 제출 할때 보낼 상태  -> 배열 안에 오브젝트형
-    aLocalStorageItem || []   //조건부 렌더링 OR연산자, 둘중 하나만 참이면 참인거 렌더링
+        aLocalStorageItem || []   //조건부 렌더링 OR연산자, 둘중 하나만 참이면 참인거 렌더링
     );   
     const [objectiveId, setObjectiveId] = useState(
         aLocalStorageItem? 
-            aLocalStorageItem.length !== 0 ? aLocalStorageItem[aLocalStorageItem.length -1].id : 1      //로컬스토리지에아이템이 있고 빈배열이 아니면 아이디 채번 이어서 관리
+            aLocalStorageItem.length !== 0 ? aLocalStorageItem[aLocalStorageItem.length -1].id +1 : 1      //로컬스토리지에아이템이 있고 빈배열이 아니면 아이디 채번 이어서 관리
         :1 
     );
 
@@ -43,7 +43,6 @@ function Home() {
             [name]: value,      // name 키를 가진 값을 value 로 수정
             id: objectiveId
         });  
-        setObjectiveId(objectiveId+1);  //ID 증가 
     }
 
     /*** 목표 제출시  ***/ 
@@ -51,6 +50,7 @@ function Home() {
         e.preventDefault();  //alert창 확인 클릭 후 새로고침 방지, state 사라질까봐 
         
         if(objectiveName !== '' && objectiveDate !== '' && objectiveDate !== null){
+            setObjectiveId(objectiveId+1);  //ID 증가 
             setObjectives([
                 ...objectives,
                 input
@@ -70,7 +70,6 @@ function Home() {
     /** objectives 업데이트 될 때마다 localStorage에 state 저장 */
     useEffect(() => {
         localStorage.setItem("objectiveItem", JSON.stringify(objectives));
-        console.log("objectives 업데이트 !");
     },[objectives])
     
 
@@ -131,6 +130,7 @@ const HomeBody = styled.div`
     font-family : Noto Sans KR,sans-serif;
     text-align : center;
 `
+
 const HomeDiv = styled.div`
     height: 35vh;
     position: relative;
@@ -221,7 +221,6 @@ const Label = styled.label`
     line-height: 1.5rem;
 `;
 
-
 const Input = styled.input`
     width: 300px;
     border: 1px solid gray;
@@ -239,7 +238,6 @@ const Input2 = styled.textarea`
     outline: none;
     font-size: 15px;
     resize: none;
-    
 `;
 
 const SubmitBtn = styled.button`

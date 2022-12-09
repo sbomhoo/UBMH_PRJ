@@ -37,6 +37,7 @@ function ObjectiveList({ objectives }){
                                     objectiveName = {objective.objectiveName}  
                                     objectiveDate = {dateFormatCustom2(objective.objectiveDate)}
                                     dDay = {getDday(objective.objectiveDate)}
+                                    challengeList ={objective.challengeList}
                                     id = {objective.id}
                                 />
                             </Grid>

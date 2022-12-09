@@ -7,9 +7,10 @@ import { CardActionArea } from '@mui/material';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 
-function ObjectiveListItem ({objectiveName, objectiveDate, dDay, id}){
+function ObjectiveListItem ({objectiveName, objectiveDate, dDay, challengeList, id}){
     return (
-        <Link to={`/detail/${id}`} style={{ textDecoration: "none" }}> 
+        <Link to={`/detail/${id}`} state={{ objectiveName: objectiveName, objectiveDate: objectiveDate, dDay: dDay, challengeList:challengeList }} 
+                style={{ textDecoration: "none" }}> 
             <Card sx={{ maxWidth: 345 }}>
                 <CardActionArea>
                 <CardMedia
