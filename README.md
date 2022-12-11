@@ -1,6 +1,9 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 유비무환 프로젝트
+- 목표 달성을 위한 ToDoList 앱
+- React와 ES6 문법들에 대해 좀 더 연습하고자 진행했던 프로젝트이다.
+- 매번 따라 치기만 했지 실제 뭔가를 구상하고 고민하면서 하려니 손이 안움직이더라 ㅋㅋㅋ 역시 프로젝트 한번 하는게 짱인거 같다.
+- 잘 알지 못하고 마음대로 안되는 부분들도 많았지만,
+- 하나 하나 검색해가면서 안써본 hooks들도 써보고 많이 도움이 되었던 것 같다.
 
 ## Available Scripts
 
