@@ -9,16 +9,16 @@
 https://sbomhoo.github.io/UBMH_PRJ/
 
 ## 화면
-### 메인화면
+### `메인화면`
 ![img1](https://user-images.githubusercontent.com/30708283/206904332-a6cc70e4-49b1-4beb-abc4-918caccb7ad6.png)
 
-### '목표 추가하기' 버튼 클릭 시
+### `'목표 추가하기' 버튼 클릭 시`
 ![img2](https://user-images.githubusercontent.com/30708283/206904337-6526f72d-ed15-4619-b42f-396156aadf3f.png)
 
-### react-datepicker를 이용한 캘린더 (살짝 커스터마이징)
+### `react-datepicker를 이용한 캘린더 (살짝 커스터마이징)`
 ![img3](https://user-images.githubusercontent.com/30708283/206904346-70f1bb40-386e-4d28-acce-3d61c13ef1a5.png)
 
-### 목표 상세 페이지
+### `목표 상세 페이지`
 ![img4](https://user-images.githubusercontent.com/30708283/206904350-d6b35182-08d7-4d5a-893b-07ad518b01b8.png)
 
 ![img5](https://user-images.githubusercontent.com/30708283/206904351-d7ce5ead-a3a6-4696-a2b9-7ee627264113.png)
