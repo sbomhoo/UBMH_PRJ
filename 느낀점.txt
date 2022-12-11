@@ -1,0 +1,17 @@
+
+
+challenge list 
+만들 때
+
+
+아예 state를
+
+[
+{name:'', checked: false},
+{name:'', checked: false},
+{name:'', checked: false},
+]
+이런 형태로 바꿔야하고 
+
+Detail 페이지에서는 그냥 뿌려주기만 하게 바꿔야함
+useLocation

@@ -5,9 +5,9 @@ import "../styles/default.css"
 import starImg from '../styles/images/star.jpg';
 
 function Detail() {
-    const location = useLocation();     //Link에서 전달한 props 가져오기
-    //console.log(location)
-    
+    const location = useLocation();     //Link에서 전달한 props 가져오기    
+    const arrClgList= location.state.challengeList.split(',');
+
     return (
         <ContainerDiv>
             <TitleDiv>
@@ -20,16 +20,14 @@ function Detail() {
                         <Label>남은 날짜</Label>
                         <Dday> D-{location.state.dDay}</Dday>
                     </TestDiv>
-                    <TestDiv>
-                        <Label>진행률</Label>
-                        <div></div>
-                    </TestDiv>
                 </FirstDiv>
                 <SecondDiv>
                     <TestDiv2>
                         <Label>중요한 것은 꺽이지 않는 마음</Label>
-                        <LabelSmall>오늘도 목표 달성을 위한 Challenge List를 체크해보자!</LabelSmall>
-                        <p>{location.state.challengeList}</p>
+                        <LabelSmall>오늘도 목표 달성을 위한 Challenge List를 체크해보자!</LabelSmall> 
+                        {arrClgList.map((item,index)=>
+                            <CheckLabel><input type="checkbox" value={item} key={index}/> <label>{item}</label> </CheckLabel>
+                        )}
                     </TestDiv2>
                 </SecondDiv>
                 
@@ -116,8 +114,6 @@ const TestDiv2 = styled.div`
     //text-align: center;
 `
 
-
-
 const Label = styled.h1`
     font-family: NanumNeoExtraBold;    
     font-size: 28px;
@@ -131,6 +127,16 @@ const LabelSmall = styled.h1`
     font-size: 14px;
     margin-bottom: -5px;
     margin-top: 15px;
+`
+
+const CheckLabel = styled.h1`
+    font-family: NanumNeoRegular;  
+    color: #595959;  
+    font-size: 17px;
+    margin-bottom: -5px;
+    margin-top: 20px;
+    line-height; 10px;
+    //text-decoration: line-through;
 `
 
 const Dday = styled.p`
