@@ -5,17 +5,23 @@
 - 잘 알지 못하고 마음대로 안되는 부분들도 많았지만,
 - 하나 하나 검색해가면서 안써본 hooks들도 써보고 많이 도움이 되었던 것 같다.
 
-## Available Scripts
+## 화면
+### 메인화면
+![img1](https://user-images.githubusercontent.com/30708283/206904332-a6cc70e4-49b1-4beb-abc4-918caccb7ad6.png)
 
-In the project directory, you can run:
+### '목표 추가하기' 버튼 클릭 시
+![img2](https://user-images.githubusercontent.com/30708283/206904337-6526f72d-ed15-4619-b42f-396156aadf3f.png)
 
-### `npm start`
+### react-datepicker를 이용한 캘린더 (살짝 커스터마이징)
+![img3](https://user-images.githubusercontent.com/30708283/206904346-70f1bb40-386e-4d28-acce-3d61c13ef1a5.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 목표 상세 페이지
+![img4](https://user-images.githubusercontent.com/30708283/206904350-d6b35182-08d7-4d5a-893b-07ad518b01b8.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![img5](https://user-images.githubusercontent.com/30708283/206904351-d7ce5ead-a3a6-4696-a2b9-7ee627264113.png)
+왠지 감성적인게 더 잘어울린다..
+
+
 
 ### `npm test`
 
