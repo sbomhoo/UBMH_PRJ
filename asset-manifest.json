@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/UBMH_PRJ/static/css/main.aace4c9d.css",
+    "main.js": "/UBMH_PRJ/static/js/main.b79eb29f.js",
+    "static/js/787.d740f784.chunk.js": "/UBMH_PRJ/static/js/787.d740f784.chunk.js",
+    "static/media/star.jpg": "/UBMH_PRJ/static/media/star.ab74f03b91478105973d.jpg",
+    "static/media/NanumSquareNeoTTF-bRg.woff": "/UBMH_PRJ/static/media/NanumSquareNeoTTF-bRg.3ef1b154df4dd187269a.woff",
+    "static/media/NanumSquareNeoTTF-cBd.woff": "/UBMH_PRJ/static/media/NanumSquareNeoTTF-cBd.b97fa8bab0f60689763b.woff",
+    "static/media/NanumSquareNeoTTF-eHv.woff": "/UBMH_PRJ/static/media/NanumSquareNeoTTF-eHv.324ece26be02824e94c0.woff",
+    "static/media/start.jpg": "/UBMH_PRJ/static/media/start.8347e92fd99bdfac48f2.jpg",
+    "index.html": "/UBMH_PRJ/index.html",
+    "main.aace4c9d.css.map": "/UBMH_PRJ/static/css/main.aace4c9d.css.map",
+    "main.b79eb29f.js.map": "/UBMH_PRJ/static/js/main.b79eb29f.js.map",
+    "787.d740f784.chunk.js.map": "/UBMH_PRJ/static/js/787.d740f784.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.aace4c9d.css",
+    "static/js/main.b79eb29f.js"
+  ]
+}
